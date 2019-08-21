@@ -42,6 +42,16 @@ impl<T: Default> ToyVec<T> {
         self.len += 1;
     }
 
+    pub fn get(&self, index: usize) -> Option<&T> {
+        if index < self.len {
+            // インデックスが範囲内ならSome(不変の参照)を返す
+            Some(&self.elements[index])
+        } else {
+            // 範囲外ならNoneを返す
+            None
+        }
+    }
+
     fn grow(&mut self) {
         unimplemented!()
     }
