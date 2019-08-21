@@ -53,6 +53,9 @@ impl<T: Default> ToyVec<T> {
     }
 
     fn grow(&mut self) {
+        // self.capacityが0のときは、allocate_in_heap(1)で長さ1のBox<[T]>を作成し、self.elementsにセットする
+        // self.capacityが1以上のときは、allocate_in_heap(self.capacity() * 2)で現在の2倍の長さのBox<[T]>を生成し、self.elementsにセットする。
+        // 既存の全要素を新しいBox<[T]>へムーブしたあと、古いBox<[T]>を破棄する
         unimplemented!()
     }
 }
