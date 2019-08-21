@@ -32,4 +32,17 @@ impl<T: Default> ToyVec<T> {
     pub fn capacity(&self) -> usize {
         self.elements.len()
     }
+
+    pub fn push(&mut self, element: T) {
+        if self.len == self.capacity() {
+            // 要素を追加するスペースがないので、大きいelementを確保し、既存の要素を引っ越す
+            self.grow();
+        }
+        self.elements[self.len] = element;
+        self.len += 1;
+    }
+
+    fn grow(&mut self) {
+        unimplemented!()
+    }
 }
