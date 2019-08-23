@@ -52,11 +52,8 @@ impl<T: Default> ToyVec<T> {
         }
     }
 
-    pub fn get_or(&self, index:usize, default:&T) -> &T {
-        match self.get(index) {
-            Some(v) => v,
-            None => default,
-        }
+    pub fn get_or<'a>(&'a self, index: usize, default: &'a T) -> &'a T {
+        self.get(index).unwrap_or(default)
     }
 
     fn grow(&mut self) {
